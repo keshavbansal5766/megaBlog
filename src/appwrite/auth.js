@@ -23,6 +23,8 @@ export class AuthService {
       );
 
       if (userAccount) {
+        /* call another method - here if userAccount created. we are redirecting to
+        login page by the help of the login() func */
         return this.login({ email, password });
       } else {
         return userAccount;

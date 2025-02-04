@@ -14,8 +14,9 @@ export class Service {
     this.bucket = new Storage(this.client);
   }
 
-  //   In this Post, we pass needed data to create it.
-  //   we create Document and passing DATABASE_ID, COLLECTION_ID, DOCUMENT_ID, and data.
+  /* In this Post, we pass needed data to create it.
+  we create Document and passing DATABASE_ID, COLLECTION_ID, DOCUMENT_ID, and data. */
+
   async createPost({ title, slug, content, featuredImage, status, userId }) {
     try {
       return await this.databases.createDocument(
@@ -36,8 +37,8 @@ export class Service {
     }
   }
 
-  //   In this Post, we pass needed data to update it.
-  //   we update Document and passing DATABASE_ID, COLLECTION_ID, DOCUMENT_ID, and data.
+  /* In this Post, we pass needed data to update it.
+  we update Document and passing DATABASE_ID, COLLECTION_ID, DOCUMENT_ID, and data. */
   async updatePost(slug, { title, content, featuredImage, status }) {
     try {
       return await this.databases.updateDocument(
@@ -56,9 +57,9 @@ export class Service {
     }
   }
 
-  //   In this Post, we pass needed info to delete it.
-  //   we delete Document and passing DATABASE_ID, COLLECTION_ID, DOCUMENT_ID.
-  //   return true if post delete otherwise return false
+  /* In this Post, we pass needed info to delete it.
+    we delete Document and passing DATABASE_ID, COLLECTION_ID, DOCUMENT_ID.
+  return true if post delete otherwise return false */
   async deletePost(slug) {
     try {
       await this.databases.deleteDocument(
@@ -73,9 +74,9 @@ export class Service {
     }
   }
 
-  //   In this Post, we pass needed info to get it.
-  //   we passing DATABASE_ID, COLLECTION_ID, DOCUMENT_ID to read Document.
-  //   return post otherwise return false if not get.
+  /* In this Post, we pass needed info to get it.
+    we passing DATABASE_ID, COLLECTION_ID, DOCUMENT_ID to read Document.
+  return post otherwise return false if not get. */
   async getPost(slug) {
     try {
       return await this.databases.getDocument(
@@ -89,12 +90,11 @@ export class Service {
     }
   }
 
-  //   In this Post, we pass needed info's to get all posts.
-  //   we passing DATABASE_ID, COLLECTION_ID and queries to read all documents.
-  //   return which posts those are active otherwise return false if not get.
-  //   [Query.equal("status", "active")],- we can all give this way in listDocuments method
-  //   we can give pagination(100),
-  //   we can give results(0)
+  /* In this Post, we pass needed info's to get all posts.
+   we passing DATABASE_ID, COLLECTION_ID and queries to read all documents.
+  return which posts those are active otherwise return false if not get.
+  [Query.equal("status", "active")],- we can all give this way in listDocuments method
+  we can give pagination(100), we can give results(0) */
   async getAllPost(queries = [Query.equal("status", "active")]) {
     try {
       return await this.databases.listDocuments(
@@ -108,7 +108,7 @@ export class Service {
     }
   }
 
-  //  file upload service
+  /*  file upload service */
 
   async uploadFile(file) {
     try {
